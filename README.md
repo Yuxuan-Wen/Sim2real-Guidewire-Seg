@@ -177,5 +177,3 @@ If you find this project useful in your research, please consider cite:
   year={2024}
 }
 ```
-# Sim2real-Guidewire-Seg
-# Sim2real-Guidewire-Seg
