@@ -91,7 +91,7 @@ class Model(nn.Module):
             iou_predictions = []
             low_res_masks = []
             
-            if len(prompts) == 2:
+            if len(prompts) == 2 and isinstance(prorpts, list):
                 for prompt_box, prompt_point, embedding in zip(prompts[0], prompts[1], image_embeddings):
 
                     sparse_embeddings, dense_embeddings = self.model.prompt_encoder(
