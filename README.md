@@ -3,7 +3,7 @@
 <h2> Generalizing Segmentation Foundation Model Under Sim-to-real Domain-shift for Guidewire Segmentation in X-ray Fluoroscopy
 
 <a href='https://github.com/Yuxuan-Wen/Sim2real-Guidewire-Seg'><img src='https://img.shields.io/badge/Project-Code-green'></a> 
-<a href='http://arxiv.org/abs/'><img src='https://img.shields.io/badge/Preprint-Paper-red'></a> 
+<a href='[http://arxiv.org/abs/](https://arxiv.org/abs/2410.07460)'><img src='https://img.shields.io/badge/Preprint-Paper-red'></a> 
 
 </div>
 
@@ -15,7 +15,8 @@
 
 ## News
 
-[2024.8.27]: The first version of implementation for "Generalizing Segmentation Foundation Model Under Sim-to-real Domain-shift for Guidewire Segmentation in X-ray Fluoroscopy" is released.
+[2024.11.14]: The first version of implementation for "Generalizing Segmentation Foundation Model Under Sim-to-real Domain-shift for Guidewire Segmentation in X-ray Fluoroscopy" is released.
+[2024.10.09]: We submitted the first version of our manuscript to arXiv [https://arxiv.org/pdf/2410.07460]
 
 ## Introduction
 
@@ -58,7 +59,7 @@ The dataset provided in [Catheter segmentation in X-ray fluoroscopy using synthe
 
 The dataset should be organized as this structure:
 ```
--fine_stage
+-coarse_stage
     ├── data (e.g. Phantom Dataset)
     │   | synthesized 
     │     ├── image
@@ -70,7 +71,7 @@ The dataset should be organized as this structure:
     │         ├── 0002.png
     │         ├── ...
 
--coarse_stage
+-fine_stage
     ├── data (e.g. Phantom Dataset)
     │   | train
     │     ├── sim
@@ -101,13 +102,12 @@ Click the links below to download the checkpoint for the corresponding model typ
 
 ## Training
 
-
 ### Coarse Stage
 ```
-# 0 (optional) add target-sepcific gaussian noise (default: random noise)
+# 0 (optional) Add target-specific Gaussian noise (default: random noise)
 change FullAugmentor in .$BASE DIR$/coarse_stage/transform.py
 
-# 1 train SAM with sythesized image
+# 1 Train SAM with synthesized image
 python coarse_stage_train.py \
     --img_path_synthesized $SYNTHESIZED IMAGE PATH$ \
     --mask_path_synthesized $SYNTHESIZED MASK PATH$ \
@@ -127,13 +127,13 @@ python gen_pseudo_label.py \
 
 ### Fine Stage
 ```
-# 1 modify configs/config.py to fit your data
+# 1 Modify configs/config.py to fit your data
 
-# 2 (Optional) train with your own data
+# 2 (Optional) Train with your own data
 specify the dir in $BASE$/fine_stage/configs/base_config.py
 create a new $YOUR DATASET.py$ in $BASE$/fine_stage/datasets
 
-# 3 train the student-teacher network
+# 3 Train the student-teacher network
 python train_stu_tea.py
 ```
 
@@ -154,7 +154,7 @@ We share our checkpoints for both the
 
 **This project is still under development. Please feel free to raise issues or submit pull requests to contribute to our codebase.**
 
-Some source code of ours is borrowed from:
+Our code is developed based on these amazing repos:
 
 - [SAM](https://github.com/facebookresearch/segment-anything)
 
@@ -166,14 +166,13 @@ Some source code of ours is borrowed from:
 
 ## Citation
 
-If you find this project useful in your research, please consider cite:
+If you find this project useful in your research, please consider citing:
 
 ```BibTeX
-@inproceedings{,
-  title={},
-  author={},
-  booktitle={},
-  pages={},
+@article{wen2024generalizing,
+  title={Generalizing Segmentation Foundation Model Under Sim-to-real Domain-shift for Guidewire Segmentation in X-ray Fluoroscopy},
+  author={Wen, Yuxuan and Roussinova, Evgenia and Brina, Olivier and Machi, Paolo and Bouri, Mohamed},
+  journal={arXiv preprint arXiv:2410.07460},
   year={2024}
 }
 ```
