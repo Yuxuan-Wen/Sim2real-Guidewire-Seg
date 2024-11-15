@@ -96,7 +96,7 @@ def train_sam(
                 loss_ws += (0.5 * dice_loss(pred_mask, pseudo_label_mask) + 0.5 * dice_loss(soft_mask, pseudo_label_mask))
                 loss_ws +=  (0.5 * dice_loss(pred_masks_tea, pseudo_label_mask) + 0.5 * dice_loss(soft_masks_tea, pseudo_label_mask))
             
-                soft_masks_p0 = (soft_masks_p0 > 0.5).float()
+                soft_masks_p0 = (soft_masks_tea > 0.5).float()
                 loss_focal += 0.5 * focal_loss(pred_masks_tea, soft_masks_p0, num_masks)
                 loss_dice += 0.5 * dice_loss(pred_masks_tea, soft_masks_p0, num_masks)
                 
@@ -108,7 +108,7 @@ def train_sam(
                 loss_c_emb += c_emb_loss(soft_image_embeds, soft_image_embeds_tea, soft_res_masks.clone().detach(), soft_res_masks_tea.clone().detach())
                 loss_c_emb += c_emb_loss(pred_image_embeds, soft_image_embeds_tea, pred_res_masks.clone().detach(), soft_res_masks_tea.clone().detach())
 
-                soft_masks_p0 = (soft_masks_p0 > 0.5).float()
+                soft_masks_p0 = (soft_masks_tea > 0.5).float()
                 loss_ws += 5.0 * (0.5 * dice_loss(pred_mask, soft_masks_p0.detach()) + 0.5 * dice_loss(soft_mask, soft_masks_p0.detach()))
 
             loss_total =  loss_ws + loss_c_emb + loss_focal + loss_dice
