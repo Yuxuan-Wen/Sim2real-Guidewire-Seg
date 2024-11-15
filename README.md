@@ -16,7 +16,7 @@
 ## News
 
 [2024.11.14]: The first version of implementation for "Generalizing Segmentation Foundation Model Under Sim-to-real Domain-shift for Guidewire Segmentation in X-ray Fluoroscopy" is released.
-[2024.10.09]: We submitted the first version of our manuscript to arXiv [https://arxiv.org/pdf/2410.07460]
+[2024.10.09]: We submitted the first version of our manuscript "Generalizing Segmentation Foundation Model Under Sim-to-real Domain-shift for Guidewire Segmentation in X-ray Fluoroscopy" to arXiv: https://arxiv.org/pdf/2410.07460
 
 ## Introduction
 
