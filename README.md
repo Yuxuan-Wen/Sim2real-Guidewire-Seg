@@ -21,7 +21,7 @@
 
 ## Introduction
 
-![block](assets/introduction.png)
+![block](assets/abs.png)
 
 Our method generalizes an end-to-end vision foundation model for application in real-world X-ray fluoroscopy, eliminating the need for manual annotations in the target domain.
 
