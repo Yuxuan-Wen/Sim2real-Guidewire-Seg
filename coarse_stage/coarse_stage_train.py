@@ -13,7 +13,6 @@ import os
 import re
 import random
 import torch.nn.functional as F
-from ada_discriminator import FeatureDis
 
 
 parser = argparse.ArgumentParser("Coarse Stage")
@@ -212,9 +211,6 @@ def main(args):
     loss_func = nn.CrossEntropyLoss()
     scheduler = PolyLRScheduler(optim, num_images=len(img_paths_synthesized), batch_size=bs, epochs=epochs)
     metric = Metric(num_classes=num_classes)
-    
-    DIS = FeatureDis(64)
-    DIS = DIS.to(device)
     
     for epoch in range(epochs):
         for i, synthesized_data in enumerate(dataloader_synthesized):
