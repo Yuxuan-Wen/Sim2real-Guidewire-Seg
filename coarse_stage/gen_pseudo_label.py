@@ -115,6 +115,7 @@ def main(args):
         img_paths = [img_path]
         # mask_paths = [mask_path]
         num_workers = 1
+    
     img_size = 1024
     if model_type == "sam":
         model = PromptSAM(model_name, checkpoint=None, num_classes=num_classes, reduction=4, upsample_times=2,
@@ -138,14 +139,14 @@ def main(args):
     for i, (x, name) in enumerate(dataloader):
         x = x.to(device)
 
-#         if device_type == "cuda" and args.mix_precision:
-#             x = x.to(dtype=torch.float16)
-#             with torch.autocast(device_type=device_type, dtype=torch.float16):
-#                 pred = model(x)
+        # if device_type == "cuda" and args.mix_precision:
+        #     x = x.to(dtype=torch.float16)
+        #     with torch.autocast(device_type=device_type, dtype=torch.float16):
+        #         pred = model(x)
 
-#         else:
+        # else:
         x = x.to(dtype=torch.float32)
-        pred, _ = model(x)
+        pred = model(x)
 
         pred = pred.argmax(dim=1)  # 如果是多类别分割，取预测的类别索引
         pred = pred.cpu().numpy()  # 转换为 numpy 数组
