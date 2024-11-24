@@ -149,11 +149,11 @@ def main(args):
         pred = model(x)
 
         pred = pred.argmax(dim=1)  # 如果是多类别分割，取预测的类别索引
-        pred = pred.cpu().numpy()  # 转换为 numpy 数组
+        pred = pred.cpu().numpy()
         
         pred[pred>0.9] = 1
 
-        # 保存每个样本的分割结果
+        # Save the results
         for j in range(pred.shape[0]):
             pred_img = pred[j]
             pred_img = (pred_img * (255 / pred_img.max())).astype(np.uint8)
