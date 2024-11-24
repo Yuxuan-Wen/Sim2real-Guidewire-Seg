@@ -165,12 +165,9 @@ class PromptSAM(nn.Module):
         return x
 
     def forward(self, x):
-        # dict_out = {}
         out = self.sam.image_encoder(x)
-        # dict_out['out0'] = out
         out = self.upscale(out, self.up_times)
         out = self.ms_conv(out)
-        # dict_out['out3'] = out
         
         seg_out = self.decoder(out)
         seg_out = F.interpolate(seg_out, size=(self.img_size, self.img_size), mode="bilinear", align_corners=True)
