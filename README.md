@@ -3,7 +3,7 @@
 <h2> Generalizing Segmentation Foundation Model Under Sim-to-real Domain-shift for Guidewire Segmentation in X-ray Fluoroscopy
 
 <a href='https://github.com/Yuxuan-Wen/Sim2real-Guidewire-Seg'><img src='https://img.shields.io/badge/Project-Code-green'></a> 
-<a href='http://arxiv.org/abs/](https://arxiv.org/pdf/2410.07460'><img src='https://img.shields.io/badge/Preprint-Paper-red'></a> 
+<a href='https://arxiv.org/abs/2410.07460'><img src='https://img.shields.io/badge/Preprint-Paper-red'></a> 
 
 </div>
 
